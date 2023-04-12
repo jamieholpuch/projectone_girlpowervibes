@@ -11,6 +11,3 @@ To use Bootcamp SIMS, visit:
 ## Credits
 
 ## License
-
-
-
