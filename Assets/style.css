@@ -1,0 +1,41 @@
+:root {
+    --blue: #0374A0;
+    --secondary: #7FBCD4;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+.card-header {
+    color: var(--blue);
+    font-size: 30px;
+}
+
+.card-title {
+    font-size: 24px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+.question {
+    font-size: 18px;
+}
+
+.btn {
+    background-color: var(--secondary);
+    border: none;
+}
+
+.btn:hover {
+    background-color: var(--blue);
+}
+
+.card-img-top {
+    max-width: 560px;
+    text-align: center;
+}
