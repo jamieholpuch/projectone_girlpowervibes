@@ -13,7 +13,7 @@
 //   .then(data => {
 //     console.log(data)
 
-var requestUrl = $.get("https://api.giphy.com/v1/gifs/search?q=cheeseburger&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=5")
+var requestUrl = "https://api.giphy.com/v1/gifs/search?q=stressed&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
 
 var resultImg = document.getElementById('resultImg');
 
@@ -29,7 +29,7 @@ function getApi(requestUrl) {
        })
        .then(function (data){
         console.log(data)
-        resultImg = data[0].images
+        document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
       })
     }
 
@@ -355,13 +355,8 @@ function submitName() {
         event.preventDefault();
         var userInput = document.getElementById('inputVal').value;
         localStorage.setItem("username", userInput)
-        let element = document.getElementById("start-name-btn");
-        let hidden = element.getAttribute("hidden");
-            if (hidden) {
-                element.removeAttribute("hidden");
-            } else {
-                element.setAttribute("hidden", "hidden");
-            }   
+        let element = document.getElementById("start-game-btn");
+            element.removeAttribute("hidden"); 
     })
 }
 
@@ -372,20 +367,39 @@ submitName()
 //}
 
 
-function startGame() {
-    if (userInput !== "") {
-        show(startBtnEl);
-        startBtnEl.addEventListener('click', function(event) {
-            event.preventDefault();
-            hide(welcomeEl);
-            renderLevel();
-            show(situationCard);
-        })    
-    } else {
-        alert("Please enter a username to start the game.");
+var levelOneSituations = [
+    {
+        situation: "You’re interested in attending a coding bootcamp! You’ve selected Butler University’s full stack web dev program, but it looks like a big commitment. The website has a submission form to inquire more and get in touch with an admissions counselor, so you enter your info and get an email back the next day.",
+        cOne: "Open the email right away, and email back. You’re excited to get the process started!",
+        cTwo: "Wait a week to open the email and another week to reply. You’ve got time!"
+    }, {
+        situation: "You’ve gotten in touch with the advisor and they have given you a bunch of info about the program. It’s important that you respond in a timely manner, since there are deadlines.",
+        cOne: "Make the phone calls, send the emails, and set up the accounts with plenty of time before the program begins.",
+        cTwo: "Procrastinate until the last few days before the program begins to tie up all the loose ends. You make it into the program, with an hour to spare.",
+    }, {
+        situation: "You’re assigned Pre-Work! You're tasked with building a website from scratch.",
+        cOne: "Spend any time remaining before the first day of class available to try to complete the Pre-Work.",
+        cTwo: "Don’t work on it, you don’t know any of the material and you're going to learn it in class anyway."
     }
-    
+];
+
+var counter = 0;
+
+function renderLevelOne() {
+    document.getElementById('level-one').removeAttribute('hidden');
+    var situationOneEl = document.getElementById("level-one-question");
+    situationOneEl.innerHTML = levelOneSituations[counter].situation;
 }
+
+function startGame() {
+    startBtnEl.addEventListener('click', function(event) {
+        event.preventDefault();
+        renderLevelOne();
+    })    
+}
+
+startGame()
+
 
 
 
