@@ -41,10 +41,26 @@ getApi(requestUrl);
 
 
 
+var lvlThreeSitch = [
+    {"After going through Phase Two, you’ve been assigned a group project! The instructor went over the requirements and acceptance criteria in class, and you’re assigned your partners. You have all of class for 2 weeks to work with your group to complete the project before giving presentations of the finished product." 
+    },
+    {situation: "You divvy up tasks between partners, and you spend time doing independent work during class." 
+    cOne: "-Rely on your partners to speak up and take the lead, they won’t let us fail"
+    cTwo: "-Contribute ideas when partners get stuck and actively participate, it’s my grade too!"
+    },
+    {situation: "The project is extensive and requires more group discussion than class time allows"
+    cOne: "-Set up and attend a study session with your partners outside of class"
+    cTwo: "-Not attend the study session, it’s already time consuming in class as it is"
+    },
+    {situation: "Presentation day! As a group, you’ll exhibit our efforts to the class before getting your final grade to see whether you pass bootcamp or not!"
+    cOne: "-You had another long day at work. The group’s got it, they’ll do great"
+    cTwo: "-You show up early and volunteer to present first"
 
 
+    }
 
 
+];
 
 
 
