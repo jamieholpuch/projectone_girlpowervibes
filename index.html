@@ -22,11 +22,13 @@
         </div>
         <div class="card-body">
           <h5 class="card-title" id="game-title">Bootcamp SIMS</h5>
-          <p class="card-text" id="game-description">Description will go here</p>
+          <p class="card-text mb-4" id="game-description">Welcome to Bootcamp SIMS - a fun, simulation game designed to help potential web development students learn exactly what to expect before deciding to attend coding bootcamp. In this experiential game, you'll navigate the enrollment, learning and project phases of bootcamp  three levels of bootcamp and make some tough decisions along the way. In the end, find out if coding bootcamp could be the right fit for you! 
+          </p>
+          <p>Enter your name below to get started!</p>
           <div class="row name-submission">
-              <div class="col-md-12 mb-2"><input type="text" class="studentName" id="inputVal" placeholder="Enter Name Here"></div>
-              <div class="col-md-12 mb-2"><button class="btn btn-primary my-3" id="submit-name-btn">Submit Name</button></div>
-              <div class="col-md-12 mb-2"><button class="btn btn-primary my-3" id="start-game-btn" hidden>Start Game</button></div>
+              <div class="col-md-12 mb-2"><input type="text" class="studentName" id="inputVal" placeholder="Your name here"></div>
+              <div class="col-md-12 mb-2"><button class="btn btn-secondary my-3" id="submit-name-btn">Submit Name</button></div>
+              <div class="col-md-12 mb-2"><button class="btn btn-secondary my-3" id="start-game-btn" hidden>Start Game</button></div>
             </div>
           </div>
         </div>
@@ -39,10 +41,10 @@
         <div class="card-body">
           <h6 class="question" id="level-one-question">Question: </h6>
           <div>
-            <input id="option-a" type="checkbox" value="" class="m-2">test
+            <button id="option-a" type="button" class="m-2"></button>
           </div>
           <div>
-            <input id="option-b" type="checkbox" value="" class="m-2">test
+            <button id="option-b" type="button" class="m-2"></button>
           </div>
           <div>
             <button class="btn btn-primary quit-game-btn my-3">Quit Game</button>
@@ -68,17 +70,17 @@
         </div>
     </div>
 
-    <div class="card text-center">
-        <div class="card-header" id="level-three">
+    <div class="card text-center" id="level-three">
+        <div class="card-header">
           Level 3
         </div>
         <div class="card-body">
-          <h6 class="question">Situation: </h6>
+          <h6 class="question" id="level-three-question">Situation: </h6>
           <div>
-            <input type="checkbox" value="" class="m-2">-Rely on your partners to speak up and take the lead, they won’t let us fail
+            <button id="optionA" type="button" class="m-2"></button>
           </div>
           <div>
-            <input type="checkbox" value="" class="m-2">-Contribute ideas when partners get stuck and actively participate, it’s my grade too!
+            <button id="optionB" type="button" class="m-2"></button>
           </div>
           <div>
             <button class="btn btn-primary quit-game-btn my-3">Quit Game</button>
