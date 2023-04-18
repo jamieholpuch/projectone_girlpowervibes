@@ -410,7 +410,7 @@ var levelOneSituations = [
     }, {
         situation: "You’ve gotten in touch with the advisor and they have given you a bunch of info about the program. It’s important that you respond in a timely manner, since there are deadlines.",
         cOne: "Make the phone calls, send the emails, and set up the accounts with plenty of time before the program begins.",
-        cTwo: "Procrastinate until the last few days before the program begins to tie up all the loose ends. You make it into the program, with an hour to spare.",
+        cTwo: "Procrastinate until the last few days before the program begins to tie up all the loose ends. You make it into the program, with an hour to spare."
     }, {
         situation: "You’re assigned Pre-Work! You're tasked with building a website from scratch.",
         cOne: "Spend any time remaining before the first day of class available to try to complete the Pre-Work.",
@@ -418,12 +418,50 @@ var levelOneSituations = [
     }
 ];
 
-var counter = 0;
 
 function renderLevelOne() {
+    
     document.getElementById('level-one').removeAttribute('hidden');
-    var situationOneEl = document.getElementById("level-one-question");
-    situationOneEl.innerHTML = levelOneSituations[counter].situation;
+    document.getElementById('welcome-card').setAttribute('hidden', 'true');
+  //  var situationOneEl = document.getElementById("level-one-question");
+  //  var questionOneEl = document.getElementById("option-a");
+   // var questionTwoEl = document.getElementById("option-b");
+
+   var situationOne = []
+   //var showSituationEl = 0;
+   //var showOptionAEl = 0;
+   //var showOptionBEl = 0;
+   for (let i = 0; i < levelOneSituations.length; i++) {
+    let thisSituation = levelOneSituations[i];
+    situationOne.push(thisSituation.situation);
+    situationOne.push(thisSituation.cOne);
+    situationOne.push(thisSituation.cTwo);
+    console.log(situationOne);
+     document.getElementById('level-one-question').innerHTML = situationOne[0];
+     document.getElementById('option-a').textContent = situationOne[1];
+     document.getElementById('option-b').textContent = situationOne[2];
+   }   
+
+var optionAEl = document.getElementById('option-a')
+var optionBEl = document.getElementById('option-b')
+var score = 0
+   
+function addPoint() {
+    if (optionAEl.addEventListener ('click', function(event) {
+        event.preventDefault();
+        score += 1
+        nextQuestion();
+    } else {
+        optionBEl.addEventListener ('click', function(event) {
+            event.preventDefault();
+            nextQuestion();
+        })  
+    })) 
+}
+
+   // situationOneEl.innerHTML = levelOneSituations[counter].situation;
+  //  questionOneEl.innerHTML = levelOneSituations[counter].cOne;
+   // questionTwoEl.innerHTML = levelOneSituations[counter].cTwo;
 }
 
 function startGame() {
@@ -434,8 +472,6 @@ function startGame() {
 }
 
 startGame()
-
-
 
 
 
