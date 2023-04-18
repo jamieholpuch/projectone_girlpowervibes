@@ -14,6 +14,7 @@
 //     console.log(data)
 
 var requestUrl = "https://api.giphy.com/v1/gifs/search?q=stressed&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
+var requestUrl2 = "https://api.giphy.com/v1/gifs/search?q=excited&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
 
 var resultImg = document.getElementById('resultImg');
 
@@ -40,27 +41,45 @@ function getApi(requestUrl) {
 getApi(requestUrl);
 
 
+var lvlThreeSituations = [
 
-var lvlThreeSitch = [
-    {"After going through Phase Two, you’ve been assigned a group project! The instructor went over the requirements and acceptance criteria in class, and you’re assigned your partners. You have all of class for 2 weeks to work with your group to complete the project before giving presentations of the finished product." 
+    {situation: "You divvy up tasks between partners, and you spend time doing independent work during class.", 
+    cOne: "Contribute ideas when partners get stuck and actively participate, it’s my grade too!",
+    cTwo: "Rely on your partners to speak up and take the lead, they won’t let us fail"
     },
-    {situation: "You divvy up tasks between partners, and you spend time doing independent work during class." 
-    cOne: "-Rely on your partners to speak up and take the lead, they won’t let us fail"
-    cTwo: "-Contribute ideas when partners get stuck and actively participate, it’s my grade too!"
+    {situation: "The project is extensive and requires more group discussion than class time allows",
+    cOne: "Set up and attend a study session with your partners outside of class",
+    cTwo: "Not attend the study session, it’s already time consuming in class as it is"
     },
-    {situation: "The project is extensive and requires more group discussion than class time allows"
-    cOne: "-Set up and attend a study session with your partners outside of class"
-    cTwo: "-Not attend the study session, it’s already time consuming in class as it is"
-    },
-    {situation: "Presentation day! As a group, you’ll exhibit our efforts to the class before getting your final grade to see whether you pass bootcamp or not!"
-    cOne: "-You had another long day at work. The group’s got it, they’ll do great"
-    cTwo: "-You show up early and volunteer to present first"
+    {situation: "Presentation day! As a group, you’ll exhibit our efforts to the class before getting your final grade to see whether you pass bootcamp or not!",
+    cOne: "You show up early and volunteer to present first",
+    cTwo: "You had another long day at work. The group’s got it, they’ll do great"
 
 
     }
 
 
 ];
+
+// var threeCounter = 0;
+
+function renderLvlThree() {
+    var situationEl = document.getElementById("level-three")
+    // situationEl.innerHTML = situations[threeCounter].situation;
+    var sitchOne = []
+    for (var i = 0; i < lvlThreeSituations.length; i++) {
+        let threeCounter = lvlThreeSituations[i];
+        console.log(threeCounter)
+        sitchOne.push(threeCounter.situation)
+        sitchOne.push(threeCounter.cOne)
+        sitchOne.push(threeCounter.cTwo)
+        document.getElementById("level-three-question").innerHTML = sitchOne[0]
+        document.getElementById("optionA").textContent = sitchOne[1]
+        document.getElementById("optionB").textContent = sitchOne[2]
+        
+    }
+};
+renderLvlThree();
 
 
 
