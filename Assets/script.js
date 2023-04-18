@@ -820,4 +820,6 @@ function renderLvlTwo() {
     chOne.textContent = lvlTwoSituations[sCounter].cOne
     chTwo.textContent = lvlTwoSituations[sCounter].cTwo
 };
-renderLvlTwo();
+// renderLvlTwo();
+
+//COMMENTED OUT TO REMOVE ERROR FOR TEST LINE 823
