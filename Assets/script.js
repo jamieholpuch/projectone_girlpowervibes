@@ -1,22 +1,23 @@
 
-//api request giphy
+// //api request giphy
 
-//level 3
+// //level 3
 
-//renderSituation 
+// //renderSituation 
 
 
-// var apiKey = "X13IhKtYw4lctizGutpMfHbcFQ0pTaaY"
-// function showGIF() {
-//   fetch(``)
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data)
+// // var apiKey = "X13IhKtYw4lctizGutpMfHbcFQ0pTaaY"
+// // function showGIF() {
+// //   fetch(``)
+// //   .then(response => response.json())
+// //   .then(data => {
+// //     console.log(data)
 
 
 //get GIPHY API
 var requestUrl = "https://api.giphy.com/v1/gifs/search?q=stressed&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
 var requestUrl2 = "https://api.giphy.com/v1/gifs/search?q=excited&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
+
 
 var resultImg = document.getElementById('resultImg');
 
@@ -35,9 +36,27 @@ function getApi(requestUrl) {
         document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
       })
     }
+
+// var resultImg = document.getElementById('resultImg');
+
+// function getApi(requestUrl) {
+//   fetch(requestUrl)
+//     .then(function (response) {
+//       console.log(response);
+//       if (response.status === 200) {
+//         return response.json();
+//       } else {
+//       console.log(response.statusText)
+//       }
+//        })
+//        .then(function (data){
+//         console.log(data)
+//         document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
+//       })
+//     }
       
 
-getApi(requestUrl);
+// getApi(requestUrl);
 
 //get Universities API
 
@@ -381,33 +400,33 @@ fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
 
 
 
-//user enters their name
-//user clicks submit name button
-//when user clicks submit name, their name is stored in local storage
-//when user clicks submit name, start game button appears
-//when user clicks start game, it takes them to the next question and hides the start game screen
+// //user enters their name
+// //user clicks submit name button
+// //when user clicks submit name, their name is stored in local storage
+// //when user clicks submit name, start game button appears
+// //when user clicks start game, it takes them to the next question and hides the start game screen
 
-var submitBtnEl = document.getElementById('submit-name-btn');
-var welcomeEl = document.getElementById('welcome-card');
-var startBtnEl = document.getElementById('start-game-btn');
+// var submitBtnEl = document.getElementById('submit-name-btn');
+// var welcomeEl = document.getElementById('welcome-card');
+// var startBtnEl = document.getElementById('start-game-btn');
 
-var username = localStorage.getItem("username");
+// var username = localStorage.getItem("username");
 
-function submitName() {
-    submitBtnEl.addEventListener('click', function(event) {
-        event.preventDefault();
-        var userInput = document.getElementById('inputVal').value;
-        localStorage.setItem("username", userInput)
-        let element = document.getElementById("start-game-btn");
-            element.removeAttribute("hidden"); 
-    })
-}
+// function submitName() {
+//     submitBtnEl.addEventListener('click', function(event) {
+//         event.preventDefault();
+//         var userInput = document.getElementById('inputVal').value;
+//         localStorage.setItem("username", userInput)
+//         let element = document.getElementById("start-game-btn");
+//             element.removeAttribute("hidden"); 
+//     })
+// }
 
-submitName()
+// submitName()
 
-//function toggle () {
-//    var 
-//}
+// //function toggle () {
+// //    var 
+// //}
 
 
 //var levelOneSituations = [
@@ -434,19 +453,6 @@ submitName()
   //  var situationOneEl = document.getElementById("level-one-question");
   //  var questionOneEl = document.getElementById("option-a");
    // var questionTwoEl = document.getElementById("option-b");
-
-  // var situationOne = []
-  // for (let i = 0; i < levelOneSituations.length; i++) {
-  //  let thisSituation = levelOneSituations[i];
-  //  situationOne.push(thisSituation.situation);
-  //  situationOne.push(thisSituation.cOne);
-  //  situationOne.push(thisSituation.cTwo);
-  //  console.log(situationOne);
-   //  document.getElementById('level-one-question').innerHTML = situationOne[0];
-   //  document.getElementById('option-a').textContent = situationOne[1];
-   //  document.getElementById('option-b').textContent = situationOne[2];
-  // }   
-//}
 
 //function renderNextQuestion() {
     
@@ -759,6 +765,7 @@ submitName()
 
 // Start of Lvl 2
 
+
 //var situations = [
   //  {
     //    situation: "After the first week you’re assigned your first challenge! It’s due a week from the assignment date.",
@@ -784,3 +791,33 @@ submitName()
     
 //}
 //renderLvlTwo();
+
+var lvlTwoSituations = [
+    {
+        situation: "After the first week you’re assigned your first challenge! It’s due a week from the assignment date.",
+        cOne: "Set aside time each day to work on it, and when you have questions during the week you go to office hours to ask the instructor.",
+        cTwo: "It’s a pretty simple design, it shouldn’t take more than an hour. Wait until the day before to start."
+    }, {
+        situation: "You realize that it’s going to take time outside of class to study and practice to really grasp the material. The course is going by quickly and there’s a lot of info in each class.",
+        cOne: "Request a tutor and meet with them once a week to go over the new material.",
+        cTwo: "You’d rather not sacrifice time in your personal life, so you’ll just try to memorize as much as you can along the way.",
+    }, {
+        situation: "You had a long day at work, and you’re feeling tired. During the program, you can only miss a total of 4 classes before you risk not passing.",
+        cOne: "Log in and be present for the class. You want to save your 4 days in case of emergency.",
+        cTwo: "Take a nap instead. You can always watch the recording of the class later."
+    }
+];
+
+var sCounter = 0;
+// user gets to lvl two - the first situation is on the screen with the two choices underneath.
+// the user answers the question by clicking one of the choices. 
+// the next situation pops up with the next two choices.  
+function renderLvlTwo() {
+    var situationEl = document.getElementById("sit");
+    situationEl.innerHTML = "Situation: " + "<br>" + lvlTwoSituations[sCounter].situation;
+    var chOne = document.getElementById("chOne");
+    var chTwo = document.getElementById("chTwo");
+    chOne.textContent = lvlTwoSituations[sCounter].cOne
+    chTwo.textContent = lvlTwoSituations[sCounter].cTwo
+};
+renderLvlTwo();
