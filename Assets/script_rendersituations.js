@@ -38,6 +38,9 @@ var situations = [
     }
 ];
 
+var submitBtnEl = document.querySelector('#submit-name-btn')
+var userName;
+
 console.log(situations)
 var score = 0;
 var optionbtns = document.querySelectorAll('.option-btn')
@@ -51,10 +54,10 @@ function questionThree() {
     document.getElementById('level-one-question').innerHTML = situations[2].title;
     var optionA = situations[2].cOne
     var optionB = situations[2].cTwo
-    optionA = optionAEl.textContent;
-    optionB = optionBEl.textContent;
+    
+    optionBEl.textContent = optionB;
+    optionAEl.textContent = optionA;
 }
-
 //shows the second situation and options
 function questionTwo() {
     document.getElementById('level-one-question').innerHTML = situations[1].title;
@@ -91,7 +94,9 @@ function checkAnswerThree() {
 //HELP: situation two is not working! 
 //for each option, it renders the next question
 function checkAnswerTwo() {
+    console.log('made it this far')
     if (optionA) {
+        
     score += 1;
     questionThree()
 } if (optionB) { 
@@ -124,6 +129,7 @@ optionbtns.forEach(optionBtn => {
     optionBtn.addEventListener('click', function(e) {
         e.preventDefault()
         if (e.target.matches('button')) {
+            console.log(e.target)
             checkAnswerTwo(e.target);
         }
     })
@@ -309,13 +315,17 @@ optionbtns.forEach(optionBtn => {
 
 
 
-
 //starts the game
  function startGame() {
-    startBtnEl.addEventListener('click', function(event) {
+    submitBtnEl.addEventListener('click', function(event) {
         event.preventDefault();
+        userName = document.querySelector('#inputVal').value
         renderLevelOne();
     })    
+}
+var userScore = {
+    name: userName,
+    finalScore: score,
 }
 
 startGame()
