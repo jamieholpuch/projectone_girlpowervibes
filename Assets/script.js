@@ -790,21 +790,9 @@ var sCounter = 0;
 function renderLvlTwo() {
     var situationEl = document.getElementById("sit");
     situationEl.innerHTML = "Situation: " + "<br>" + lvlTwoSituations[sCounter].situation;
-    for (var i = 0; i < lvlTwoSituations[sCounter].situation.length; i++) {
-       var chOne = document.getElementById("chOne");
-       var chTwo = document.getElementById("chTwo");
-       chOne.textContent = lvlTwoSituations[sCounter].cOne[i];
-       chTwo.textContent = lvlTwoSituations[sCounter].cTwo[i];
-        
-    }
-    
+    var chOne = document.getElementById("chOne");
+    var chTwo = document.getElementById("chTwo");
+    chOne.textContent = lvlTwoSituations[sCounter].cOne
+    chTwo.textContent = lvlTwoSituations[sCounter].cTwo
 };
 renderLvlTwo();
-
-// for (var i = 0; i < lvlTwoSituations.length; i++) {
-//     sCounter = lvlTwoSituations[i].situation;
-//     var chOne = document.getElementById("chOne");
-//     var chTwo = document.getElementById("chTwo");
-    
-
-// }
