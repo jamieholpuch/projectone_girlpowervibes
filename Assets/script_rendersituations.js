@@ -23,8 +23,8 @@ var situations = [
         title: "You had a long day at work, and you’re feeling tired. During the program, you can only miss a total of 4 classes before you risk not passing.",
         cOne: "Log in and be present for the class. You want to save your 4 days in case of emergency.",
         cTwo: "Take a nap instead. You can always watch the recording of the class later."
-    }, { 
-        title: "You divvy up tasks between partners, and you spend time doing independent work during class.", 
+    }, {
+        title: "You divvy up tasks between partners, and you spend time doing independent work during class.",
         cOne: "Contribute ideas when partners get stuck and actively participate, it’s my grade too!",
         cTwo: "Rely on your partners to speak up and take the lead, they won’t let us fail"
     }, {
@@ -38,294 +38,115 @@ var situations = [
     }
 ];
 
-var submitBtnEl = document.querySelector('#submit-name-btn')
-var userName;
-
 console.log(situations)
 var score = 0;
+var startBtnEl = document.getElementById('start-game-btn');
 var optionbtns = document.querySelectorAll('.option-btn')
 var optionAEl = document.querySelector('#option-a')
 var optionBEl = document.querySelector('#option-b')
+var levelOneQuestion = document.getElementById('level-one-question');
+var restartGameEl = document.getElementById('restart-game')
 
-//level one situations
 
-//shows the third situation and options
-function questionThree() {
-    document.getElementById('level-one-question').innerHTML = situations[2].title;
-    var optionA = situations[2].cOne
-    var optionB = situations[2].cTwo
-    
-    optionBEl.textContent = optionB;
-    optionAEl.textContent = optionA;
-}
-//shows the second situation and options
-function questionTwo() {
-    document.getElementById('level-one-question').innerHTML = situations[1].title;
-    var optionA = situations[1].cOne
-    var optionB = situations[1].cTwo
-    optionAEl.textContent = optionA;
-    optionBEl.textContent = optionB;
-}
-
-//renders the first situation once the games starts
-function renderLevelOne() {
-//hides the welcome page and shows the first level
+//renders the situation once the games starts
+var qCounter = 0
+var level = 1
+var gameover = false
+function renderLevel() {
+    //hides the welcome page and shows the first level
     document.getElementById('level-one').removeAttribute('hidden');
     document.getElementById('welcome-card').setAttribute('hidden', 'true');
-//shows the first situations and options
-    document.getElementById('level-one-question').innerHTML = situations[0].title;
-    var optionA = situations[0].cOne
-    var optionB = situations[0].cTwo
+    //shows the first situations and options
+    var situationOne = situations[qCounter].title
+    var optionA = situations[qCounter].cOne
+    var optionB = situations[qCounter].cTwo
+    levelOneQuestion.textContent = situationOne;
     optionAEl.textContent = optionA;
     optionBEl.textContent = optionB;
 }
 
-//checks the answer for the third situtation, if they select option A, a point is added to score
+//checks the user answer for the situtation, if they select option A, a point is added to score
 //for each option, it renders the next question
-function checkAnswerThree() {
-    if (optionA) {
-    score += 1;
-} if (optionB) { 
-    renderLevelTwo()
-}
-}
+//once three situations are answered, the next level is rendered
+function checkAnswer(userClicked) {
+    if (!gameover) {
+        if (level === 1) {
+            if (userClicked === situations[qCounter].cOne) {
+                score += 1;
+            }
+            qCounter++
+            renderLevel()
+                if (qCounter === 3) {
+                    level += 1;
+                    document.getElementById('level-name').textContent = "Level 2"
+                }
+        } else if (level === 2) {
+            //do level 2
+            if (userClicked === situations[qCounter].cOne) {
+                score += 1;
+                
+            }
+            qCounter++
+            renderLevel()
+                if (qCounter === 6) {
+                    level += 1;
+                    document.getElementById('level-name').textContent = "Level 3"
+                }
+                renderLevel()
+        } else if (level === 3) {
+            //do do level  3
+            if (userClicked === situations[qCounter].cOne) {
+                score += 1;
+            }
+            qCounter++
+            renderLevel()
+                if (qCounter === 8) {
+                    level += 1
+                }
+        } else if (level === 4) {
+                gameover === true
+                    document.getElementById('results-page').removeAttribute('hidden');
+                    document.getElementById('level-one').setAttribute('hidden', 'true');
+          //        showResult();
+        }
+           // renderHighScores()
+            // game over
+        }
+    }
 
-//checks the answer for the second situtation, if they select option A, a point is added to score
-//HELP: situation two is not working! 
-//for each option, it renders the next question
-function checkAnswerTwo() {
-    console.log('made it this far')
-    if (optionA) {
-        
-    score += 1;
-    questionThree()
-} if (optionB) { 
-    questionThree()
-}
-}
 
-//checks the answer for the first situtation, if they select option A, a point is added to score
-//for each option, it renders the next question
-function checkAnswerOne() {
-    if (optionA) {
-    score += 1;
-    questionTwo()
-} if (optionB) { 
-    questionTwo()
-}
-}
+
 
 //event listeners, for each button, it runs the check answer functions
 optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
+    optionBtn.addEventListener('click', function (e) {
         e.preventDefault()
         if (e.target.matches('button')) {
-            checkAnswerThree(e.target);
+            checkAnswer(e.target.textContent);
         }
     })
 })
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            console.log(e.target)
-            checkAnswerTwo(e.target);
-        }
-    })
-})
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerOne(e.target);
-        }
-    })
-})
-
-
-
-
-
-//level two situations (same as above)
-
-function questionThree() {
-    document.getElementById('level-two-question').innerHTML = situations[5].title;
-    var optionA = situations[4].cOne
-    var optionB = situations[4].cTwo
-    optionA = optionAEl.textContent;
-    optionB = optionBEl.textContent;
-}
-
-
-function questionTwo() {
-    document.getElementById('level-one-question').innerHTML = situations[4].title;
-    var optionA = situations[4].cOne
-    var optionB = situations[4].cTwo
-    optionAEl.textContent = optionA;
-    optionBEl.textContent = optionB;
-}
-
-function renderLevelTwo() {
-    document.getElementById('level-two').removeAttribute('hidden');
-    document.getElementById('level-one').setAttribute('hidden', 'true');
-    document.getElementById('level-one-question').innerHTML = situations[3].title;
-    var optionA = situations[3].cOne
-    var optionB = situations[3].cTwo
-    optionAEl.textContent = optionA;
-    optionBEl.textContent = optionB;
-}
-
-function checkAnswerThree() {
-    if (optionA) {
-    score += 1;
-} if (optionB) { 
-    renderLevelThree()
-}
-}
-
-function checkAnswerTwo() {
-    if (optionA) {
-    score += 1;
-    questionThree()
-} if (optionB) { 
-    questionThree()
-}
-}
-
-function checkAnswerOne() {
-    if (optionA) {
-    score += 1;
-    questionTwo()
-} if (optionB) { 
-    questionTwo()
-}
-}
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerThree(e.target);
-        }
-    })
-})
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerTwo(e.target);
-        }
-    })
-})
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerOne(e.target);
-        }
-    })
-})
-
-
-//level three situations (same as above)
-
-function questionThree() {
-    document.getElementById('level-three-question').innerHTML = situations[8].title;
-    var optionA = situations[8].cOne
-    var optionB = situations[8].cTwo
-    optionA = optionAEl.textContent;
-    optionB = optionBEl.textContent;
-}
-
-
-function questionTwo() {
-    document.getElementById('level-three-question').innerHTML = situations[7].title;
-    var optionA = situations[7].cOne
-    var optionB = situations[7].cTwo
-    optionAEl.textContent = optionA;
-    optionBEl.textContent = optionB;
-}
-
-function renderLevelThree() {
-    document.getElementById('level-three').removeAttribute('hidden');
-    document.getElementById('level-two').setAttribute('hidden', 'true');
-    document.getElementById('level-three-question').innerHTML = situations[6].title;
-    var optionA = situations[6].cOne
-    var optionB = situations[6].cTwo
-    optionAEl.textContent = optionA;
-    optionBEl.textContent = optionB;
-}
-
-function checkAnswerThree() {
-    if (optionA) {
-    score += 1;
-} if (optionB) { 
-}
-}
-
-function checkAnswerTwo() {
-    if (optionA) {
-    score += 1;
-    questionThree()
-} if (optionB) { 
-    questionThree()
-}
-}
-
-function checkAnswerOne() {
-    if (optionA) {
-    score += 1;
-    questionTwo()
-} if (optionB) { 
-    questionTwo()
-}
-}
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerThree(e.target);
-        }
-    })
-})
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerTwo(e.target);
-        }
-    })
-})
-
-optionbtns.forEach(optionBtn => {
-    optionBtn.addEventListener('click', function(e) {
-        e.preventDefault()
-        if (e.target.matches('button')) {
-            checkAnswerOne(e.target);
-        }
-    })
-})
-
-
-
 
 //starts the game
- function startGame() {
-    submitBtnEl.addEventListener('click', function(event) {
+function startGame() {
+    startBtnEl.addEventListener('click', function (event) {
         event.preventDefault();
-        userName = document.querySelector('#inputVal').value
-        renderLevelOne();
-    })    
-}
-var userScore = {
-    name: userName,
-    finalScore: score,
+        renderLevel();
+    })
 }
 
 startGame()
+
+function restartGame() {
+    restartGameEl.addEventListener('click', function (event) {
+        event.preventDefault();
+        console.countReset("level")
+        console.countReset("qCounter")
+        renderLevel()
+        document.getElementById('results-page').setAttribute('hidden', 'true');
+    })
+}
+
+restartGame()
+
+
