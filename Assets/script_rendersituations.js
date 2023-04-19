@@ -107,7 +107,7 @@ function checkAnswer(userClicked) {
                 gameover === true
                     document.getElementById('results-page').removeAttribute('hidden');
                     document.getElementById('level-one').setAttribute('hidden', 'true');
-          //        showResult();
+                    showResult();
         }
            // renderHighScores()
             // game over
@@ -142,8 +142,11 @@ function restartGame() {
         event.preventDefault();
         console.countReset("level")
         console.countReset("qCounter")
+        level = 1
+        qCounter = 0
         renderLevel()
         document.getElementById('results-page').setAttribute('hidden', 'true');
+        document.getElementById('level-name').textContent = "Level 1"
     })
 }
 
