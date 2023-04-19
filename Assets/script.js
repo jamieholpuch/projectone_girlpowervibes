@@ -15,8 +15,9 @@
 
 
 //get GIPHY API
-var requestUrl = "https://api.giphy.com/v1/gifs/search?q=stressed&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
-var requestUrl2 = "https://api.giphy.com/v1/gifs/search?q=excited&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
+var requestUrl = "https://api.giphy.com/v1/gifs/search?q=excited&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
+var requestUrl2 = "https://api.giphy.com/v1/gifs/search?q=thinking&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
+var requestUrl3 = "https://api.giphy.com/v1/gifs/search?q=stressed&api_key=X13IhKtYw4lctizGutpMfHbcFQ0pTaaY&limit=1"
 
 
 var resultImg = document.getElementById('resultImg');
@@ -37,26 +38,89 @@ function getApi(requestUrl) {
       })
     }
 
-// var resultImg = document.getElementById('resultImg');
+var resultImg2 = document.getElementById('resultImg');
 
-// function getApi(requestUrl) {
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       console.log(response);
-//       if (response.status === 200) {
-//         return response.json();
-//       } else {
-//       console.log(response.statusText)
-//       }
-//        })
-//        .then(function (data){
-//         console.log(data)
-//         document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
-//       })
-//     }
+function getApi(requestUrl2) {
+  fetch(requestUrl2)
+    .then(function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        return response.json();
+      } else {
+      console.log(response.statusText)
+      }
+       })
+       .then(function (data){
+        console.log(data)
+        document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
+      })
+    }
+
+    var resultImg3 = document.getElementById('resultImg');
+
+function getApi(requestUrl3) {
+  fetch(requestUrl3)
+    .then(function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        return response.json();
+      } else {
+      console.log(response.statusText)
+      }
+       })
+       .then(function (data){
+        console.log(data)
+        document.getElementById('resultImg').innerHTML = "<img src='" + data.data[0].images.original.url +"' />";
+      })
+    }
       
 
-// getApi(requestUrl);
+
+
+
+
+
+
+function showResult() {
+  
+
+  if (score <= 3) {
+    document.getElementById('results-description').textContent = ("Not enroll in Coding Bootcamp at this time. It's a big challenge that requires a lot of time dedicated to learning and practicing. Eat, Sleep, Breathe, Code")
+    getApi(requestUrl3);
+  } else {
+    if (score <= 6) {
+      document.getElementById('results-description').textContent = ("Think about it a bit more before enrolling. It sounds like you're fairly interested but not quite ready to make the necessary lifestyle changes to succeed.")
+      getApi(requestUrl2);
+      
+    } else {
+      document.getElementById('results-description').textContent = ("Definitely enroll in Coding Bootcamp! You've got the right mindset for a new Developer!")
+      getApi(requestUrl);
+    }
+
+  }
+  return; 
+}
+
+//showResult()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //get Universities API
 
@@ -67,6 +131,7 @@ fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
   .then(function (data) {
     console.log(data);
   });
+
 
 //var lvlThreeSituations = [
 
@@ -792,6 +857,7 @@ submitName()
 //}
 //renderLvlTwo();
 
+
 // var lvlTwoSituations = [
 //     {
 //         situation: "After the first week you’re assigned your first challenge! It’s due a week from the assignment date.",
@@ -822,4 +888,67 @@ submitName()
 // };
 // renderLvlTwo();
 
+var lvlTwoSituations = [
+    {
+        situation: "After the first week you’re assigned your first challenge! It’s due a week from the assignment date.",
+        cOne: "Set aside time each day to work on it, and when you have questions during the week you go to office hours to ask the instructor.",
+        cTwo: "It’s a pretty simple design, it shouldn’t take more than an hour. Wait until the day before to start."
+    }, {
+        situation: "You realize that it’s going to take time outside of class to study and practice to really grasp the material. The course is going by quickly and there’s a lot of info in each class.",
+        cOne: "Request a tutor and meet with them once a week to go over the new material.",
+        cTwo: "You’d rather not sacrifice time in your personal life, so you’ll just try to memorize as much as you can along the way.",
+    }, {
+        situation: "You had a long day at work, and you’re feeling tired. During the program, you can only miss a total of 4 classes before you risk not passing.",
+        cOne: "Log in and be present for the class. You want to save your 4 days in case of emergency.",
+        cTwo: "Take a nap instead. You can always watch the recording of the class later."
+    }
+];
+
+var sCounter = 0;
+// user gets to lvl two - the first situation is on the screen with the two choices underneath.
+// the user answers the question by clicking one of the choices. 
+// the next situation pops up with the next two choices.  
+function renderLvlTwo() {
+    var situationEl = document.getElementById("sit");
+    situationEl.innerHTML = "Situation: " + "<br>" + lvlTwoSituations[sCounter].situation;
+    var chOne = document.getElementById("chOne");
+    var chTwo = document.getElementById("chTwo");
+    chOne.textContent = lvlTwoSituations[sCounter].cOne
+    chTwo.textContent = lvlTwoSituations[sCounter].cTwo
+};
+  renderLvlTwo();
+
+
 //COMMENTED OUT TO REMOVE ERROR FOR TEST LINE 823
+
+
+// getApi(requestUrl);
+
+//get Universities API
+var uniListEl = document.getElementById("universityList");
+fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    var uniListEl = document.getElementById("universityList");
+    var btnOne = document.getElementById("btn1");
+    var btnTwo = document.getElementById("btn2");
+    var btnThree = document.getElementById("btn3");
+    var btnFour = document.getElementById("btn4");
+    var btnFive = document.getElementById("btn5");
+    btnOne.innerText = data[0].web_pages[0];
+    btnTwo.innerText = data[1].web_pages[0];
+    btnThree.innerText = data[2].web_pages[0];
+    btnFour.innerText = data[3].web_pages[0];
+    btnFive.innerText = data[4].web_pages[0];
+    // if user gets worst result, display university list as buttons
+      //only need 10 buttons to generate
+      // need buttons only if user gets worst result
+  });
+
+  // var uniBtn = document.createElement("button");
+  //     // console.log(data[i].web_pages[0]);
+  //     uniBtn.innerText = data[i].web_pages[0];
+  //     uniListEl.appendChild(uniBtn);
