@@ -56,17 +56,6 @@ function getApi(requestUrl) {
 //     }
       
 
-// getApi(requestUrl);
-
-//get Universities API
-
-fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
 
 //var lvlThreeSituations = [
 
@@ -823,3 +812,35 @@ function renderLvlTwo() {
 // renderLvlTwo();
 
 //COMMENTED OUT TO REMOVE ERROR FOR TEST LINE 823
+
+
+// getApi(requestUrl);
+
+//get Universities API
+var uniListEl = document.getElementById("universityList");
+fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    var uniListEl = document.getElementById("universityList");
+    var btnOne = document.getElementById("btn1");
+    var btnTwo = document.getElementById("btn2");
+    var btnThree = document.getElementById("btn3");
+    var btnFour = document.getElementById("btn4");
+    var btnFive = document.getElementById("btn5");
+    btnOne.innerText = data[0].web_pages[0];
+    btnTwo.innerText = data[1].web_pages[0];
+    btnThree.innerText = data[2].web_pages[0];
+    btnFour.innerText = data[3].web_pages[0];
+    btnFive.innerText = data[4].web_pages[0];
+    // if user gets worst result, display university list as buttons
+      //only need 10 buttons to generate
+      // need buttons only if user gets worst result
+  });
+
+  // var uniBtn = document.createElement("button");
+  //     // console.log(data[i].web_pages[0]);
+  //     uniBtn.innerText = data[i].web_pages[0];
+  //     uniListEl.appendChild(uniBtn);
