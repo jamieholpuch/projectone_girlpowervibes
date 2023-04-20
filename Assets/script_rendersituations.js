@@ -153,3 +153,47 @@ function restartGame() {
 restartGame()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function submitName() {
+    submitBtnEl.addEventListener('click', function(event) {
+        event.preventDefault();
+        var userInput = document.getElementById('inputVal').value;
+        localStorage.setItem("username", userInput)
+        let element = document.getElementById("start-game-btn");
+            element.removeAttribute("hidden"); 
+    })
+}
+
+submitName()
