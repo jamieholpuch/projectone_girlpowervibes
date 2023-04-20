@@ -32,7 +32,7 @@ var situations = [
         cOne: "Set up and attend a study session with your partners outside of class",
         cTwo: "Not attend the study session, it’s already time consuming in class as it is"
     }, {
-        title: "Presentation day! As a group, you’ll exhibit our efforts to the class before getting your final grade to see whether you pass bootcamp or not!",
+        title: "Presentation day! As a group, you’ll exhibit your efforts to the class before getting your final grade to see whether you pass bootcamp or not!",
         cOne: "You show up early and volunteer to present first",
         cTwo: "You had another long day at work. The group’s got it, they’ll do great"
     }

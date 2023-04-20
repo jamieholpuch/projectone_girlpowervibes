@@ -60,8 +60,7 @@ function getApi(requestUrl3) {
       })
     }
       
-//var universityRequestUrl = "https://universities.hipolabs.com/search?country=United+States&limit=20"
-var activityRequestUrl = "https://www.boredapi.com/api/activity?type=education"
+var activityRequestUrl = "https://www.boredapi.com/api/activity?key=5881028"
 var universityList = document.getElementById('universityList')
 
 function getActivityApi(activityRequestUrl) {
@@ -77,20 +76,8 @@ function getActivityApi(activityRequestUrl) {
     .then(function (data) {
       console.log(data);
        var btnOne = document.getElementById("btn1");
-      // var btnTwo = document.getElementById("btn2");
-      // var btnThree = document.getElementById("btn3");
-      // var btnFour = document.getElementById("btn4");
-      // var btnFive = document.getElementById("btn5");
        btnOne.textContent = data.activity;
-      // btnTwo.textContent = data[1].name;
-      // btnThree.textContent = data[2].name;
-      // btnFour.textContent = data[3].name;
-      // btnFive.textContent = data[4].name;
-       document.getElementById('btn-one-href').href = data.link;
-      // document.getElementById('btn-two-href').href = data[1].web_pages[1]
-      // document.getElementById('btn-three-href').href = data[2].web_pages[2]
-      // document.getElementById('btn-four-href').href = data[3].web_pages[3]
-      // document.getElementById('btn-five-href').href = data[4].web_pages[4]
+       document.getElementById('btn-one-href').href = "https://www.codecademy.com/learn/introduction-to-javascript";
     })
 }
 
@@ -109,7 +96,6 @@ function showResult() {
     } 
   } 
 
-  //quits game when user clicks "quit game"
   function quitGame() {
     quitGameEl.addEventListener('click', function (event) {
         event.preventDefault();
@@ -117,10 +103,7 @@ function showResult() {
         document.getElementById('level-one-question').textContent = "Your Bootcamp SIMS game has been exited. Thanks for playing!";
         document.getElementById('option-a').textContent = "Your current score is: " + score + " out of " + situations.length;
         document.getElementById('option-b').textContent = "";
-       // document.getElementsById('card-description').setAttribute = ('hidden', 'true');
-       // document.getElementById('option-b').setAttribute = ('hidden', 'true');
         document.getElementById('quit-btn').textContent = "";
-      //  document.getElementById('quit-btn').setAttribute = ('hidden', 'true');
   })
   }
   
@@ -137,13 +120,6 @@ var submitBtnEl = document.getElementById('submit-name-btn');
 var welcomeEl = document.getElementById('welcome-card');
 var startBtnEl = document.getElementById('start-game-btn');
 var userInput = document.getElementById("inputVal");
-
-//check for validation of username
-// if (userInput = "") {
-//     userInput.required = true;
-// } else {
-//     submitName()
-// }
 
 //when user submits their name, they are able to click start game
 function submitName() {
