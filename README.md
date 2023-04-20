@@ -9,7 +9,9 @@ To use Bootcamp SIMS, visit: https://jamieholpuch.github.io/projectone_girlpower
 ![Screenshot 2023-04-19 at 8 40 48 PM](https://user-images.githubusercontent.com/126021339/233229596-a15014ac-2e27-4405-883b-f388813a5fa7.png)
 
 ## Credits
-Lines 115-129 in HTML: code source from: https://codepen.io/JacobLett/pen/poajmpr
+Lines 86-93 are credited to:
+
+    Summers, Stacy. “How to Create Share Buttons for Your Site Step-By-Step.”  Web Design Library, Web Design Library, 21 May 2021, https://www.webdesign.org/html-and-css/tutorials/how-to-create-a-share-button-for-your-site.22180.html. 
 
 ## License
 MIT License
