@@ -142,7 +142,7 @@ function startGame() {
 startGame()
 
 
-
+//restarts the game at game conclusion
 function restartGame() {
     restartGameEl.addEventListener('click', function (event) {
         event.preventDefault();
