@@ -41,11 +41,11 @@ var situations = [
 console.log(situations)
 var score = 0;
 var startBtnEl = document.getElementById('start-game-btn');
-var optionbtns = document.querySelectorAll('.option-btn')
-var optionAEl = document.querySelector('#option-a')
-var optionBEl = document.querySelector('#option-b')
+var optionbtns = document.querySelectorAll('.option-btn');
+var optionAEl = document.querySelector('#option-a');
+var optionBEl = document.querySelector('#option-b');
 var levelOneQuestion = document.getElementById('level-one-question');
-var restartGameEl = document.getElementById('restart-game')
+var restartGameEl = document.getElementById('restart-game');
 
 
 //renders the situation once the games starts
@@ -57,9 +57,9 @@ function renderLevel() {
     document.getElementById('level-one').removeAttribute('hidden');
     document.getElementById('welcome-card').setAttribute('hidden', 'true');
     //shows the first situations and options
-    var situationOne = situations[qCounter].title
-    var optionA = situations[qCounter].cOne
-    var optionB = situations[qCounter].cTwo
+    var situationOne = situations[qCounter].title;
+    var optionA = situations[qCounter].cOne;
+    var optionB = situations[qCounter].cTwo;
     levelOneQuestion.textContent = situationOne;
     optionAEl.textContent = optionA;
     optionBEl.textContent = optionB;
@@ -137,16 +137,18 @@ function startGame() {
 
 startGame()
 
+
+
 function restartGame() {
     restartGameEl.addEventListener('click', function (event) {
         event.preventDefault();
-        console.countReset("level")
-        console.countReset("qCounter")
-        level = 1
-        qCounter = 0
+        console.countReset("level");
+        console.countReset("qCounter");
+        level = 1;
+        qCounter = 0;
         renderLevel()
         document.getElementById('results-page').setAttribute('hidden', 'true');
-        document.getElementById('level-name').textContent = "Level 1"
+        document.getElementById('level-name').textContent = "Level 1";
     })
 }
 
@@ -186,14 +188,12 @@ restartGame()
 
 
 
-function submitName() {
-    submitBtnEl.addEventListener('click', function(event) {
-        event.preventDefault();
-        var userInput = document.getElementById('inputVal').value;
-        localStorage.setItem("username", userInput)
-        let element = document.getElementById("start-game-btn");
-            element.removeAttribute("hidden"); 
-    })
-}
 
-submitName()
+function quitGame() {
+    var quitGameBtns = document.getElementById('quitBtn');
+    quitGameBtns.addEventListener('click', function (event) {
+        event.preventDefault();
+        startGame()
+    })
+  }
+  quitGame()
