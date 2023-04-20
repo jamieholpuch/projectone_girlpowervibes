@@ -68,15 +68,35 @@ function showResult() {
 
   if (score <= 3) {
     document.getElementById('results-description').textContent = ("Not enroll in Coding Bootcamp at this time. It's a big challenge that requires a lot of time dedicated to learning and practicing. Eat, Sleep, Breathe, Code")
+    document.getElementById('universityList').removeAttribute('hidden'); 
     getApi(requestUrl3);
+    
+    fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      var btnOne = document.getElementById("btn1");
+      var btnTwo = document.getElementById("btn2");
+      var btnThree = document.getElementById("btn3");
+      var btnFour = document.getElementById("btn4");
+      var btnFive = document.getElementById("btn5");
+      btnOne.innerText = data[0].web_pages[0];
+      btnTwo.innerText = data[1].web_pages[0];
+      btnThree.innerText = data[2].web_pages[0];
+      btnFour.innerText = data[3].web_pages[0];
+      btnFive.innerText = data[4].web_pages[0];
+  });
   } else {
     if (score <= 6) {
-      document.getElementById('results-description').textContent = ("Think about it a bit more before enrolling. It sounds like you're fairly interested but not quite ready to make the necessary lifestyle changes to succeed.")
+      document.getElementById('results-description').textContent = ("Think about it a bit more before enrolling. It sounds like you're fairly interested but not quite ready to make the necessary lifestyle changes to succeed.") 
       getApi(requestUrl2);
-      
+      document.getElementById('universityList').setAttribute('hidden'); 
     } else {
       document.getElementById('results-description').textContent = ("Definitely enroll in Coding Bootcamp! You've got the right mindset for a new Developer!")
       getApi(requestUrl);
+      document.getElementById('universityList').setAttribute('hidden'); 
     }
 
   }
@@ -118,27 +138,3 @@ function submitName() {
 submitName()
 
 
-// getApi(requestUrl);
-
-//get Universities API
-var uniListEl = document.getElementById("universityList");
-fetch('http://universities.hipolabs.com/search?country=United+States&limit=20')
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    var uniListEl = document.getElementById("universityList");
-    var btnOne = document.getElementById("btn1");
-    var btnTwo = document.getElementById("btn2");
-    var btnThree = document.getElementById("btn3");
-    var btnFour = document.getElementById("btn4");
-    var btnFive = document.getElementById("btn5");
-    btnOne.innerText = data[0].web_pages[0];
-    btnTwo.innerText = data[1].web_pages[0];
-    btnThree.innerText = data[2].web_pages[0];
-    btnFour.innerText = data[3].web_pages[0];
-    btnFive.innerText = data[4].web_pages[0];
-    // if user gets worst result, display university list as buttons
-      // need buttons only if user gets worst result
-  });
