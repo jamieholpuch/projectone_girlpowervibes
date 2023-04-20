@@ -154,6 +154,41 @@ function restartGame() {
 
 restartGame()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function quitGame() {
     var quitGameBtns = document.getElementById('quitBtn');
     quitGameBtns.addEventListener('click', function (event) {
