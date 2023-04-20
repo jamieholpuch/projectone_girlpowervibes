@@ -61,6 +61,7 @@ function getApi(requestUrl3) {
     }
       
 var universityRequestUrl = "http://universities.hipolabs.com/search?country=United+States&limit=20"
+var universityList = document.getElementById('universityList')
 
 function getUniversityApi(universityRequestUrl) {
   fetch(universityRequestUrl)
@@ -95,17 +96,15 @@ function getUniversityApi(universityRequestUrl) {
 function showResult() {
   if (score <= 3) {
     document.getElementById('results-description').textContent = ("Not enroll in Coding Bootcamp at this time. It's a big challenge that requires a lot of time dedicated to learning and practicing. Eat, Sleep, Breathe, Code")
-    document.getElementById('universityList').removeAttribute('hidden'); 
+    universityList.removeAttribute('hidden'); 
     getApi(requestUrl3);
     getUniversityApi(universityRequestUrl);
   } else if (score <= 6) {
       document.getElementById('results-description').textContent = ("Think about it a bit more before enrolling. It sounds like you're fairly interested but not quite ready to make the necessary lifestyle changes to succeed.") 
       getApi(requestUrl2);
-      document.getElementById('universityList').setAttribute('hidden'); 
   } else {
       document.getElementById('results-description').textContent = ("Definitely enroll in Coding Bootcamp! You've got the right mindset for a new Developer!")
       getApi(requestUrl);
-      document.getElementById('universityList').setAttribute('hidden'); 
     } 
   } 
 
