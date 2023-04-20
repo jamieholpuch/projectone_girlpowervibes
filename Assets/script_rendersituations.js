@@ -46,6 +46,8 @@ var optionAEl = document.querySelector('#option-a');
 var optionBEl = document.querySelector('#option-b');
 var levelOneQuestion = document.getElementById('level-one-question');
 var restartGameEl = document.getElementById('restart-game');
+var quitGameEl = document.getElementById('quit-btn');
+
 
 
 //renders the situation once the games starts
@@ -127,6 +129,8 @@ optionbtns.forEach(optionBtn => {
     })
 })
 
+
+
 //starts the game
 function startGame() {
     startBtnEl.addEventListener('click', function (event) {
@@ -142,9 +146,8 @@ startGame()
 function restartGame() {
     restartGameEl.addEventListener('click', function (event) {
         event.preventDefault();
-        console.countReset("level");
-        console.countReset("qCounter");
         level = 1;
+        score = 0;
         qCounter = 0;
         renderLevel()
         document.getElementById('results-page').setAttribute('hidden', 'true');
@@ -189,11 +192,7 @@ restartGame()
 
 
 
-function quitGame() {
-    var quitGameBtns = document.getElementById('quitBtn');
-    quitGameBtns.addEventListener('click', function (event) {
-        event.preventDefault();
-        startGame()
-    })
-  }
-  quitGame()
+
+
+
+
