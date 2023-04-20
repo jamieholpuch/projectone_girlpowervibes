@@ -60,7 +60,7 @@ function getApi(requestUrl3) {
       })
     }
       
-var universityRequestUrl = "http://universities.hipolabs.com/search?country=United+States&limit=20"
+var universityRequestUrl = "https://universities.hipolabs.com/search?country=United+States&limit=20"
 var universityList = document.getElementById('universityList')
 
 function getUniversityApi(universityRequestUrl) {
